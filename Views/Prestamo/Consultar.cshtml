@@ -262,7 +262,6 @@
                 type: "POST",
                 data: {estadorecibido: $("#txtestadolibrorecibido").val() , idprestamo : _idprestamo },
                 success: function (data) {
-                    console.log(data);
                     if (data.resultado) {
                         tabladata.ajax.reload();
                         alert("Listo", "Se registro la devolución", "success");
