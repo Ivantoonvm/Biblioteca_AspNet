@@ -1,6 +1,6 @@
 ﻿
 @{
-    Layout = null;
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <!DOCTYPE html>
@@ -24,7 +24,7 @@
                         <!-- Nested Row within Card Body -->
                         <div class="row">
                             <div class="col-6">
-                                <img src="@Url.Content("~/Imagenes/libros.jpg")" style="width: 500px;height: 500px;" />
+                                <img src="@Url.Content("https://images.vexels.com/content/216637/preview/digital-library-logo-design-1c96fa.png")" style="width: 500px;height: 500px;" />
                             </div>
                             <div class="col-6">
                                 <div class="p-5">
@@ -33,10 +33,10 @@
                                     </div>
                                     <form class="user" action="@Url.Action("Index","Login")" method="post" >
                                         <div class="form-group">
-                                            <input type="email" class="form-control form-control-user" name="correo" placeholder="Email" value="Konoe@gmail.com">
+                                            <input type="email" class="form-control form-control-user" name="correo" placeholder="Email" value="">
                                         </div>
                                         <div class="form-group">
-                                            <input type="password" class="form-control form-control-user" name="clave" placeholder="Password" value="123">
+                                            <input type="password" class="form-control form-control-user" name="clave" placeholder="Password" value="">
                                         </div>
                                         <div class="form-group">
                                             @{if (ViewBag.Error != null)
@@ -52,7 +52,7 @@
                                     </form>
                                     <hr>
                                     <div class="text-center justify-content-center">
-                                        <p class="text-primary mb-0">Todos los derechos reservados &copy;<a href="https://ouo.io/RK1tRH" target="_blank" class="text-danger ml-1"><b>Open Source - CLICK AQUI !!</b></a></p>
+                                        <p class="text-primary mb-0">Todos los derechos reservados &copy<b>ICR</b></p>
                                     </div>
                                 </div>
                             </div>

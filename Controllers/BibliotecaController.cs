@@ -207,7 +207,7 @@ public JsonResult GuardarLibro(string objeto, IFormFile imagenArchivo)
         public JsonResult GuardarPersona(Persona objeto)
         {
             bool respuesta = false;
-            objeto.Clave = objeto.Clave == null ? "" : objeto.Clave;
+            objeto.Clave = objeto.Clave == null ? GenerarClaveAleatoria() : objeto.Clave;
             respuesta = (objeto.IdPersona == 0) ? PersonaLogica.Instancia.Registrar(objeto) : PersonaLogica.Instancia.Modificar(objeto);
             return Json(new { resultado = respuesta });
         }
@@ -219,6 +219,11 @@ public JsonResult GuardarLibro(string objeto, IFormFile imagenArchivo)
             return Json(new { resultado = respuesta });
         }
 
+        public string GenerarClaveAleatoria()
+    {
+           return $"UPIC{Guid.NewGuid().ToString().Substring(0, 8)}";
+    }
+
 
     }
     public class Response
@@ -227,4 +232,5 @@ public JsonResult GuardarLibro(string objeto, IFormFile imagenArchivo)
         public bool resultado { get; set; }
         public string mensaje { get; set; }
     }
+    
 }

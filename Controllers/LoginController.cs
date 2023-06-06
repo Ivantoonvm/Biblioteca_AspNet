@@ -1,32 +1,39 @@
-﻿using Proyecto_biblioteca.Logica;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Http;
 using Proyecto_biblioteca.Models;
-using Microsoft.AspNetCore.Mvc;
-using Newtonsoft.Json;
+using Proyecto_biblioteca.Logica;
 
-namespace Proyecto_biblioteca.Controllers;
-
+namespace Proyecto_biblioteca.Controllers
+{
     public class LoginController : Controller
     {
-        // GET: Login
-        public ActionResult Index()
+        public IActionResult Index()
         {
             return View();
         }
 
         [HttpPost]
-        public ActionResult Index(string correo, string clave)
+        public IActionResult Index(string correo, string clave)
         {
-
             Persona ousuario = PersonaLogica.Instancia.Listar().Where(u => u.Correo == correo && u.Clave == clave && u.oTipoPersona.IdTipoPersona != 3).FirstOrDefault();
-
+            
+            
             if (ousuario == null)
             {
                 ViewBag.Error = "Usuario o contraseña no correcta";
                 return View();
             }
+            
+            // Crear una cookie para almacenar el usuario
+            var options = new CookieOptions
+            {
+                Expires = DateTime.Now.AddDays(1) // Configurar la expiración de la cookie
+            };
+            Response.Cookies.Append("Usuario", ousuario.oTipoPersona.IdTipoPersona.ToString(), options);
+            Response.Cookies.Append("Nombre", ousuario.Nombre);
+            Response.Cookies.Append("Apellido", ousuario.Apellido);
 
-            // Session["Usuario"] = ousuario;
-
-            return RedirectToAction("Index", "Admin");
+            return RedirectToAction("Index", "Home"); // Redireccionar a la página de inicio después del inicio de sesión exitoso 
         }
     }
+}

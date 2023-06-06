@@ -1,4 +1,12 @@
-﻿<!DOCTYPE html>
+﻿
+@{
+    var usuarioId = Context.Request.Cookies["Usuario"];
+    var usuarioNombre = Context.Request.Cookies["Nombre"];
+    var usuarioApellido = Context.Request.Cookies["Apellido"];
+
+}
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -10,21 +18,24 @@
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.0/themes/base/jquery-ui.css">
 
 </head>
-<body>
+<body> 
     <div id="wrapper">
-        <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-            <a class="navbar-brand" href="/Home/Index">
-                <i class="fas fa-book-reader fa-2x mr-2" style="color: #f1d209;"></i>
-                <span class="sidebar-brand-text">Mi Biblioteca</span>
-            </a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+         <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <a class="navbar-brand" href="/Admin/Index">
+        <i class="fas fa-book-reader fa-2x mr-2" style="color: #f1d209;"></i>
+        <span class="sidebar-brand-text">Mi Biblioteca</span>
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    @{
+        if(int.TryParse(usuarioId, out int exist)){
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="/Home/Index">
+                        <a class="nav-link" href="@Url.Action("Index", "Admin")">
                             <i class="fas fa-fw fa-tachometer-alt"></i>
                             <span>Dashboard</span>
                         </a>
@@ -43,23 +54,28 @@
                             </div>
                         </div>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseBiblioteca"
-                            aria-expanded="false" aria-controls="collapseBiblioteca">
-                            <i class="fas fa-book"></i>
-                            <span>Biblioteca</span>
-                        </a>
-                        <div id="collapseBiblioteca" class="collapse" aria-labelledby="headingBiblioteca"
-                            data-parent="#navbarNav">
-                            <div class="bg-white py-2 collapse-inner rounded">
-                                <h6 class="collapse-header">Registrar:</h6>
-                                <a class="collapse-item" href="/Biblioteca/Libros">Libros</a>
-                                <a class="collapse-item" href="/Biblioteca/Autores">Autores</a>
-                                <a class="collapse-item" href="/Biblioteca/Editorial">Editorial</a>
-                                <a class="collapse-item" href="/Biblioteca/Categoria">Categoria</a>
+                    @{
+                    @if (int.TryParse(usuarioId, out int id) && id == 1)
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseBiblioteca"
+                                aria-expanded="false" aria-controls="collapseBiblioteca">
+                                <i class="fas fa-book"></i>
+                                <span>Biblioteca</span>
+                            </a>
+                            <div id="collapseBiblioteca" class="collapse" aria-labelledby="headingBiblioteca"
+                                data-parent="#navbarNav">
+                                <div class="bg-white py-2 collapse-inner rounded">
+                                    <h6 class="collapse-header">Registrar:</h6>
+                                    <a class="collapse-item" href="/Biblioteca/Libros">Libros</a>
+                                    <a class="collapse-item" href="/Biblioteca/Autores">Autores</a>
+                                    <a class="collapse-item" href="/Biblioteca/Editorial">Editorial</a>
+                                    <a class="collapse-item" href="/Biblioteca/Categoria">Categoria</a>
+                                </div>
                             </div>
-                        </div>
-                    </li>
+                        </li>
+                    }
+                    }
                     <li class="nav-item">
                         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePersonas"
                             aria-expanded="false" aria-controls="collapsePersonas">
@@ -70,36 +86,39 @@
                             data-parent="#navbarNav">
                             <div class="bg-white py-2 collapse-inner rounded">
                                 <h6 class="collapse-header">Registrar:</h6>
-                                <a class="collapse-item" href="/Persona/Usuarios">Usuarios</a>
+                                @{if (int.TryParse(usuarioId, out int id2) && id2 == 1)
+                                    {
+                                    <a class="collapse-item" href="/Persona/Usuarios">Usuarios</a>
+                                    }
+                                }
                                 <a class="collapse-item" href="/Persona/Lectores">Lectores</a>
                             </div>
                         </div>
                     </li>
                 </ul>
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item dropdown no-arrow">
+                        <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">
+                            <span class="mr-2 d-none d-lg-inline text-gray-600 small">@(usuarioNombre + " " + usuarioApellido)</span>
+                            <i class="fas fa-user-shield" style="font-size: 25px; font-weight: bold;"></i>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+                            <a class="dropdown-item" href="/Admin/CerrarSesion">
+                                <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                                Salir
+                            </a>
+                        </div>
+                    </li>
+                </ul>
             </div>
-        </nav>
+        }
+    }
+</nav>
+   
         <div id="content-wrapper" class="d-flex flex-column">
             <div id="content">
                 <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
-                    <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
-                        <i class="fa fa-bars"></i>
-                    </button>
-                    <ul class="navbar-nav ml-auto">
-                        <li class="nav-item dropdown no-arrow">
-                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Ivan</span>
-                                <i class="fas fa-user-shield" style="font-size: 25px; font-weight: bold;"></i>
-                            </a>
-                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
-                                aria-labelledby="userDropdown">
-                                <a class="dropdown-item" href="/Admin/CerrarSesion">
-                                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Salir
-                                </a>
-                            </div>
-                        </li>
-                    </ul>
                 </nav>
                 <div class="container-fluid">
                     @RenderBody()
