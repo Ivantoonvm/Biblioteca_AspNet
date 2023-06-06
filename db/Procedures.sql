@@ -38,7 +38,7 @@ END
 
 
 //Autor
-CREATE PROCEDURE `DB_BIBLIOTECA`.`sp_RegistrarAutor`(
+CREATE PROCEDURE sp_RegistrarAutor(
     IN pDescripcion VARCHAR(50),
     OUT pResultado BIT
 )
@@ -73,7 +73,7 @@ BEGIN
 END
 
 //EDITORIAL
-CREATE PROCEDURE `DB_BIBLIOTECA`.`sp_RegistrarEditorial`(
+CREATE PROCEDURE sp_RegistrarEditorial(
     IN pDescripcion VARCHAR(50),
     OUT pResultado BIT
 )
@@ -179,8 +179,8 @@ CREATE PROCEDURE sp_ModificarPersona(
 BEGIN
     SET pResultado = 1;
 
-    IF NOT EXISTS (SELECT * FROM persona WHERE Correo = pCorreo AND IdPersona != pIdPersona) THEN
-        UPDATE persona SET 
+    IF NOT EXISTS (SELECT * FROM PERSONA WHERE Correo = pCorreo AND IdPersona != pIdPersona) THEN
+        UPDATE PERSONA SET 
         Nombre = pNombre,
         Apellido = pApellido,
         Correo = pCorreo,
@@ -215,7 +215,7 @@ BEGIN
         SET IDPERSONA = LAST_INSERT_ID();
 
         IF (pIdTipoPersona = 3) THEN
-            UPDATE persona SET 
+            UPDATE PERSONA SET 
             Codigo = fn_obtenercorrelativo(IDPERSONA),
             Clave = fn_obtenercorrelativo(IDPERSONA)
             WHERE IdPersona = IDPERSONA;

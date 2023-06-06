@@ -44,7 +44,8 @@ VALUES
   (10, 'Arte', 1, '2023-06-01 00:00:00'),
   (11, 'Autoayuda', 1, '2023-06-01 00:00:00'),
 (12, 'Novela', 1, '2023-06-01 00:00:00'),
-  (13, 'Drama', 1, '2023-06-01 00:00:00');
+(13, 'Tecnologia', 1, '2023-06-01 00:00:00'),
+  (14, 'Drama', 1, '2023-06-01 00:00:00');
   
  INSERT INTO TIPO_PERSONA  (IdTipoPersona, Descripcion, Estado, FechaCreacion)
 VALUES
