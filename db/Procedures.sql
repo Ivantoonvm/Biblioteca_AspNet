@@ -195,36 +195,26 @@ BEGIN
 END;
 
 //Persona
-CREATE PROCEDURE sp_RegistrarPersona(
+CREATE DEFINER=`root`@`localhost` PROCEDURE `DB_BIBLIOTECA`.`sp_RegistrarPersona`(
     IN pNombre VARCHAR(50),
     IN pApellido VARCHAR(50),
     IN pCorreo VARCHAR(50),
     IN pClave VARCHAR(50),
+    IN pCodigo VARCHAR(50),
     IN pIdTipoPersona INT,
     OUT pResultado BIT
 )
 BEGIN
-    DECLARE IDPERSONA INT;
-
     SET pResultado = 1;
 
     IF NOT EXISTS (SELECT * FROM PERSONA WHERE correo = pCorreo) THEN
-        INSERT INTO PERSONA(Nombre, Apellido, Correo, Clave, IdTipoPersona) 
-        VALUES (pNombre, pApellido, pCorreo, pClave, pIdTipoPersona);
-
-        SET IDPERSONA = LAST_INSERT_ID();
-
-        IF (pIdTipoPersona = 3) THEN
-            UPDATE PERSONA SET 
-            Codigo = fn_obtenercorrelativo(IDPERSONA),
-            Clave = fn_obtenercorrelativo(IDPERSONA)
-            WHERE IdPersona = IDPERSONA;
-        END IF;
+        INSERT INTO PERSONA(Nombre, Apellido, Correo, Clave,Codigo, IdTipoPersona) 
+        VALUES (pNombre, pApellido, pCorreo, pClave,pCodigo, pIdTipoPersona);
     ELSE
         SET pResultado = 0;
     END IF;
 
-END;
+END
 
 
 //Prestamo
