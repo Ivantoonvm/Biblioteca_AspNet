@@ -120,7 +120,7 @@
                 contentType: "application/json; charset=utf-8",
                 success: function (data) {
                     if (data.data != null) {
-                        var a = data.data.filter(item => item.oTipoPersona.IdTipoPersona == 3)
+                        var a = data.data.filter(item => item.oTipoPersona.idTipoPersona == 3)
                         $("#div_lectores").text(a.length)
 
                     } else {

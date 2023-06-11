@@ -30,10 +30,10 @@ namespace Proyecto_biblioteca.Controllers
                 Expires = DateTime.Now.AddDays(1) // Configurar la expiración de la cookie
             };
             Response.Cookies.Append("Usuario", ousuario.oTipoPersona.IdTipoPersona.ToString(), options);
-            Response.Cookies.Append("Nombre", ousuario.Nombre);
-            Response.Cookies.Append("Apellido", ousuario.Apellido);
+            Response.Cookies.Append("Nombre", ousuario.Nombre,options);
+            Response.Cookies.Append("Apellido", ousuario.Apellido,options);
 
-            return RedirectToAction("Index", "Home"); // Redireccionar a la página de inicio después del inicio de sesión exitoso 
+            return RedirectToAction("Index", "Admin"); // Redireccionar a la página de inicio después del inicio de sesión exitoso 
         }
     }
 }

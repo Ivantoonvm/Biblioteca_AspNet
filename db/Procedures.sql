@@ -195,7 +195,7 @@ BEGIN
 END;
 
 //Persona
-CREATE DEFINER=`root`@`localhost` PROCEDURE `DB_BIBLIOTECA`.`sp_RegistrarPersona`(
+CREATE PROCEDURE `DB_BIBLIOTECA`.`sp_RegistrarPersona`(
     IN pNombre VARCHAR(50),
     IN pApellido VARCHAR(50),
     IN pCorreo VARCHAR(50),
