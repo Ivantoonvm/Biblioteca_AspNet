@@ -30,7 +30,6 @@ namespace Proyecto_biblioteca.Logica;
             {
                 try
                 {   
-                    Console.WriteLine(oCategoria.Descripcion + " Categoria");
                     MySqlCommand cmd = new MySqlCommand("sp_RegistrarCategoria", oConexion);
                     cmd.Parameters.AddWithValue("pDescripcion", oCategoria.Descripcion);
                     cmd.Parameters.Add("pResultado", MySqlDbType.Bit).Direction = ParameterDirection.Output;

@@ -36,7 +36,6 @@ namespace Proyecto_biblioteca.Logica
             {
                 try
                 {
-                    Console.WriteLine(objeto.TextoFechaDevolucion);
                     MySqlCommand cmd = new MySqlCommand("sp_RegistrarPrestamo", oConexion);
                     cmd.Parameters.AddWithValue("pIdEstadoPrestamo", objeto.oEstadoPrestamo.IdEstadoPrestamo);
                     cmd.Parameters.AddWithValue("pIdPersona", objeto.oPersona.IdPersona);

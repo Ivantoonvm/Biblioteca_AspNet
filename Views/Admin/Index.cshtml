@@ -2,7 +2,12 @@
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    var usuarioId = Context.Request.Cookies["Usuario"];
 }
+
+
+
+@if(int.TryParse(usuarioId, out int exist)){
 
 <!-- Page Heading -->
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
@@ -17,7 +22,7 @@
                 <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
                         <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                            Total Libros
+                            Total Libros Activos
                         </div>
                         <div class="h5 mb-0 font-weight-bold text-gray-800" id="div_libros">0</div>
                     </div>
@@ -35,7 +40,7 @@
                 <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
                         <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                            Cantidad Lectores
+                            Cantidad Lectores Activos
                         </div>
                         <div class="h5 mb-0 font-weight-bold text-gray-800" id="div_lectores">0</div>
                     </div>
@@ -82,7 +87,11 @@
             </div>
         </div>
     </div>
-</div>
+    </div>
+
+}else{
+     Context.Response.Redirect("/");
+}
 
 @section scripts{
 <script>
@@ -98,7 +107,8 @@
                 success: function (data) {
 
                     if (data.data != null) {
-                        $("#div_libros").text(data.data.length)
+                        const validBooks = data.data.filter(item =>item.estado)
+                        $("#div_libros").text(validBooks.length)
 
                     } else {
                         $("#div_libros").text("0");
@@ -120,8 +130,8 @@
                 contentType: "application/json; charset=utf-8",
                 success: function (data) {
                     if (data.data != null) {
-                        var a = data.data.filter(item => item.oTipoPersona.idTipoPersona == 3)
-                        $("#div_lectores").text(a.length)
+                        const validPersons = data.data.filter(item => item.oTipoPersona.idTipoPersona == 3 && item.estado)
+                        $("#div_lectores").text(validPersons.length)
 
                     } else {
                         $("#div_lectores").text("0");
@@ -144,7 +154,12 @@
                 success: function (data) {
 
                     if (data.data != null) {
-                        $("#div_prestamos").text(data.data.length)
+                        if(@usuarioId==3){
+                            const prestamosPersona =  data.data.filter(item => item.oPersona.idPersona == 3)
+                            $("#div_prestamos").text(prestamosPersona.length)
+                        }else{
+                            $("#div_prestamos").text(data.data.length)
+                        }
 
                     } else {
                         $("#div_prestamos").text("0");
@@ -167,8 +182,14 @@
                 success: function (data) {
 
                     if (data.data != null) {
-                        var a = data.data.filter(item => item.oEstadoPrestamo.IdEstadoPrestamo == 1)
-                        $("#div_pendientes").text(a.length)
+                        if(@usuarioId==3){
+                            const prestamosPersona =  data.data.filter(item => item.oPersona.idPersona == 3 && item.oEstadoPrestamo.idEstadoPrestamo == 1)
+                            $("#div_prestamos").text(prestamosPersona.length)
+                        }else{
+                            var a = data.data.filter(item => item.oEstadoPrestamo.IdEstadoPrestamo == 1)
+                            $("#div_pendientes").text(a.length)
+                        }
+                        
 
                     } else {
                         $("#div_pendientes").text("0");

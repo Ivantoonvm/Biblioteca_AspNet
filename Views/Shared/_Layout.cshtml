@@ -40,6 +40,7 @@
                             <span>Dashboard</span>
                         </a>
                     </li>
+                @if(int.TryParse(usuarioId, out int id) && id != 3){
                     <li class="nav-item">
                         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePrestamos"
                             aria-expanded="false" aria-controls="collapsePrestamos">
@@ -54,8 +55,8 @@
                             </div>
                         </div>
                     </li>
-                    @{
-                    @if (int.TryParse(usuarioId, out int id) && id == 1)
+                }    
+                @if (int.TryParse(usuarioId, out int id1) && id1 != 3)
                     {
                         <li class="nav-item">
                             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseBiblioteca"
@@ -75,7 +76,7 @@
                             </div>
                         </li>
                     }
-                    }
+                @if(int.TryParse(usuarioId, out int id2) && id2 != 3){
                     <li class="nav-item">
                         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePersonas"
                             aria-expanded="false" aria-controls="collapsePersonas">
@@ -86,7 +87,7 @@
                             data-parent="#navbarNav">
                             <div class="bg-white py-2 collapse-inner rounded">
                                 <h6 class="collapse-header">Registrar:</h6>
-                                @{if (int.TryParse(usuarioId, out int id2) && id2 == 1)
+                                @{if (int.TryParse(usuarioId, out int id3) && id3 == 1)
                                     {
                                     <a class="collapse-item" href="/Persona/Usuarios">Usuarios</a>
                                     }
@@ -95,6 +96,7 @@
                             </div>
                         </div>
                     </li>
+                }      
                 </ul>
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item dropdown no-arrow">

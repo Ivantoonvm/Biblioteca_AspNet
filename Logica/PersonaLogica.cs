@@ -36,16 +36,13 @@ namespace Proyecto_biblioteca.Logica;
             using (MySqlConnection oConexion = new MySqlConnection(Conexion.CN))
             {
                 try
-                {
-                    
-                    objeto.Codigo = objeto.oTipoPersona.IdTipoPersona == 3 ? objeto.Clave : "";
-                
+                {                
                     MySqlCommand cmd = new MySqlCommand("sp_RegistrarPersona", oConexion);
                     cmd.Parameters.AddWithValue("pNombre", objeto.Nombre);
                     cmd.Parameters.AddWithValue("pApellido", objeto.Apellido);
                     cmd.Parameters.AddWithValue("pCorreo", objeto.Correo);
                     cmd.Parameters.AddWithValue("pClave", objeto.Clave);
-                    cmd.Parameters.AddWithValue("pCodigo", objeto.Clave);
+                    cmd.Parameters.AddWithValue("pCodigo", objeto.Codigo);
                     cmd.Parameters.AddWithValue("pIdTipoPersona", objeto.oTipoPersona.IdTipoPersona);
                     cmd.Parameters.Add("pResultado", MySqlDbType.Bit).Direction = ParameterDirection.Output;
                     cmd.CommandType = CommandType.StoredProcedure;
@@ -167,6 +164,7 @@ namespace Proyecto_biblioteca.Logica;
                 }
                 catch (Exception ex)
                 {
+                    Console.WriteLine(ex);
                     respuesta = false;
                 }
 

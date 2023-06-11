@@ -62,7 +62,6 @@ namespace Proyecto_biblioteca.Controllers
         {
             bool respuesta = false;
             respuesta = PrestamoLogica.Instancia.Devolver(estadorecibido,idprestamo);
-            Console.WriteLine(respuesta);
             return Json(new { resultado = respuesta });
         }
     }

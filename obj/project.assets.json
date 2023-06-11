@@ -2147,19 +2147,19 @@
     ]
   },
   "packageFolders": {
-    "/home/ivantoon/.nuget/packages/": {}
+    "/home/navitoon/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/home/ivantoon/escuela/Biblioteca_AspNet/Proyecto_biblioteca.csproj",
+      "projectUniqueName": "/home/navitoon/Cursos/Node/Proyecto_biblioteca/Proyecto_biblioteca.csproj",
       "projectName": "Proyecto_biblioteca",
-      "projectPath": "/home/ivantoon/escuela/Biblioteca_AspNet/Proyecto_biblioteca.csproj",
-      "packagesPath": "/home/ivantoon/.nuget/packages/",
-      "outputPath": "/home/ivantoon/escuela/Biblioteca_AspNet/obj/",
+      "projectPath": "/home/navitoon/Cursos/Node/Proyecto_biblioteca/Proyecto_biblioteca.csproj",
+      "packagesPath": "/home/navitoon/.nuget/packages/",
+      "outputPath": "/home/navitoon/Cursos/Node/Proyecto_biblioteca/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/home/ivantoon/.nuget/NuGet/NuGet.Config"
+        "/home/navitoon/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net6.0"

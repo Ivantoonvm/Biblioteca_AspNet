@@ -15,7 +15,7 @@ namespace Proyecto_biblioteca.Controllers
         [HttpPost]
         public IActionResult Index(string correo, string clave)
         {
-            Persona ousuario = PersonaLogica.Instancia.Listar().Where(u => u.Correo == correo && u.Clave == clave && u.oTipoPersona.IdTipoPersona != 3).FirstOrDefault();
+            Persona ousuario = PersonaLogica.Instancia.Listar().Where(u => u.Correo == correo && u.Clave == clave).FirstOrDefault();
             
             
             if (ousuario == null)

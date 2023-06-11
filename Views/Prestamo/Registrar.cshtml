@@ -2,6 +2,7 @@
 @{
     ViewBag.Title = "Registrar";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    var usuarioId = Context.Request.Cookies["Usuario"];
 }
 <style>
     table.dataTable tbody td {
@@ -9,6 +10,9 @@
     }
 </style>
 
+
+
+@if(int.TryParse(usuarioId, out int exist)){
 <div class="card shadow mb-4">
     <div class="card-header py-3 bg-primary">
         <h6 class="m-0 font-weight-bold text-white">Registrar Préstamo</h6>
@@ -94,7 +98,9 @@
 
     </div>
 </div>
-
+}else{
+     Context.Response.Redirect("/");
+}
 
 <!-- Modal -->
 <div class="modal fade" id="registromodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" data-backdrop="static">
@@ -201,9 +207,7 @@
                     "datatype": "json",
                     "dataSrc": function (json) {
 
-                        return json.data.filter(function (item) {
-                            return item.oTipoPersona.idTipoPersona == 3;
-                        });
+                        return json.data.filter(item => item.oTipoPersona.idTipoPersona == 3 && item.estado);
                     }
                 },
                "columns": [
@@ -231,7 +235,11 @@
                 "ajax": {
                     "url": '@Url.Action("ListarLibro", "Biblioteca")',
                     "type": "GET",
-                    "datatype": "json"
+                    "datatype": "json",
+                    "dataSrc": function (json) {
+
+                        return json.data.filter(item =>item.estado);
+                    }
                 },
                "columns": [
                     {

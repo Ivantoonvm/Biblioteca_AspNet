@@ -2,9 +2,10 @@
 @{
     ViewBag.Title = "Editorial";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    var usuarioId = Context.Request.Cookies["Usuario"];
 }
 
-
+@if(int.TryParse(usuarioId, out int exist)){
 <!-- DataTales Example -->
 <div class="card shadow mb-4">
     <div class="card-header py-3 bg-primary">
@@ -44,7 +45,9 @@
 
     </div>
 </div>
-
+}else{
+     Context.Response.Redirect("/");
+}
 
 
 <!-- Modal -->
