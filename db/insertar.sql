@@ -55,30 +55,28 @@ VALUES
  
  INSERT INTO PERSONA (IdPersona, Nombre, Apellido, Correo, Clave, Codigo, idTipoPersona, Estado, FechaCreacion)
 VALUES
-  (1, 'Juan', 'Pérez', 'juan22@gmail.com', 'clave123', 'ABC123', 1, 1, '2023-06-01 00:00:00'),
-  (2, 'María', 'González', 'mariago@gmail.com', 'password456', 'DEF456', 1, 1, '2023-06-01 00:00:00'),
+  (1, 'Juan', 'Pérez', 'juan22@gmail.com', 'clave123', 'ABC123', 3, 1, '2023-06-01 00:00:00'),
+  (2, 'María', 'González', 'mariago@gmail.com', 'password456', 'DEF456', 3, 1, '2023-06-01 00:00:00'),
   (3, 'Carlos', 'López', 'carlosmicky@hotmail.com', 'qwerty789', 'GHI789', 2, 1, '2023-06-01 00:00:00'),
-  (4, 'Ana', 'Martínez', 'analana@outlook.com', 'securepassword', 'JKL012', 2, 1, '2023-06-01 00:00:00'),
-  (5, 'Luis', 'Rodríguez', 'luismiguel@gmail.com', 'password123', 'MNO345', 2, 1, '2023-06-01 00:00:00');
+  (4, 'Ana', 'Martínez', 'analana@outlook.com', 'securepassword', 'JKL012', 3, 1, '2023-06-01 00:00:00'),
+  (5, 'Luis', 'Rodríguez', 'luismiguel@gmail.com', 'password123', 'MNO345', 2, 1, '2023-06-01 00:00:00'),
+  (6, 'Admin', 'Pro', 'admin@gmail.com', 'admin123', 'MNO145', 1, 1, '2023-06-01 00:00:00');
  
  
  
 INSERT INTO LIBRO  (IdLibro, Titulo, RutaPortada, NombrePortada, idAutor, idCategoria, idEditorial, Ubicacion, Ejemplares, Estado, FechaCreacion)
 VALUES
-  (1, 'Cien años de soledad', 'ruta1.jpg', 'Portada 1', 1, 2, 1, 'Estantería 1', 10, 1, '2023-06-01 00:00:00'),
-  (2, 'El amor en los tiempos del cólera', 'ruta2.jpg', 'Portada 2', 1, 2, 1, 'Estantería 2', 8, 1, '2023-06-01 00:00:00'),
-  (3, 'Crónica de una muerte anunciada', 'ruta3.jpg', 'Portada 3', 1, 2, 2, 'Estantería 3', 6, 1, '2023-06-01 00:00:00'),
-  (4, '1984', 'ruta1.jpg', 'Portada 1', 2, 6, 1, 'Estantería 1', 10, 1, '2023-06-01 00:00:00'),
-  (5, 'Rebelión en la granja', 'ruta2.jpg', 'Portada 2', 2, 7, 3, 'Estantería 1', 8, 1, '2023-06-01 00:00:00'),
-  (6, 'Homenaje a Cataluña', 'ruta3.jpg', 'Portada 3', 2,1 , 3, 'Estantería 1', 6, 1, '2023-06-01 00:00:00'),
-  (7, 'Don Quijote de la Mancha', 'ruta3.jpg', 'Portada 3', 5, 1, 4, 'Estantería 3', 6, 1, '2023-06-01 00:00:00'),
-  (8, 'Matar a un ruiseñor', 'ruta4.jpg', 'Portada 4', 3, 12, 4, 'Estantería 4', 5, 1, '2023-06-01 00:00:00'),
-  (9, 'Orgullo y prejuicio', 'ruta5.jpg', 'Portada 5', 4, 5, 4, 'Estantería 3', 10, 1, '2023-06-01 00:00:00'),
-  (12, 'El gran Gatsby', 'ruta8.jpg', 'Portada 8', 6, 5, 1, 'Estantería 3', 6, 1, '2023-06-01 00:00:00'),
-  (14, 'Jane Eyre', 'ruta9.jpg', 'Portada 9', 7, 12, 1, 'Estantería 4', 27, 1, '2023-06-01 00:00:00'),
-  (16, 'Harry Potter y la piedra filosofal', 'ruta11.jpg', 'Portada 11', 9, 12, 5, 'Estantería 4', 10, 1, '2023-06-01 00:00:00'),
-  (19, 'El viejo y el mar', 'ruta14.jpg', 'Portada 14', 10, 12, 4, 'Estantería 4', 7, 1, '2023-06-01 00:00:00'),
-  (24, 'Hamlet', 'ruta19.jpg', 'Portada 19', 6, 13, 5, 'Estantería 19', 8, 1, '2023-06-01 00:00:00');
+  (1, 'Cien años de soledad', 'images/', '1.jpg', 1, 2, 1, 'Estantería 1', 10, 1, '2023-06-01 00:00:00'),
+  (2, 'El amor en los tiempos del cólera', 'images/', '2.jpg', 1, 2, 1, 'Estantería 2', 8, 1, '2023-06-01 00:00:00'),
+  (3, 'Crónica de una muerte anunciada', 'images/', '3.jpg', 1, 2, 2, 'Estantería 3', 6, 1, '2023-06-01 00:00:00'),
+  (4, '1984', 'images/', '4.jpg', 2, 6, 1, 'Estantería 1', 10, 1, '2023-06-01 00:00:00'),
+  (5, 'Rebelión en la granja', 'images/', '5.jpg', 2, 7, 3, 'Estantería 1', 8, 1, '2023-06-01 00:00:00'),
+  (6, 'Harry Potter y la piedra filosofal', 'images/', '6.jpg', 9, 12, 5, 'Estantería 4', 10, 1, '2023-06-01 00:00:00'),
+  (7, 'El viejo y el mar', 'images/', '7.jpg', 10, 12, 4, 'Estantería 4', 7, 1, '2023-06-01 00:00:00'),
+  (8, 'Hamlet', 'images/', '8.jpg', 6, 13, 5, 'Estantería 19', 8, 1, '2023-06-01 00:00:00');
+  (9, 'Orgullo y prejuicio', 'images/', '9.jpg', 4, 5, 4, 'Estantería 3', 10, 1, '2023-06-01 00:00:00'),
+  (10, 'El gran Gatsby', 'images/', '10.jpg', 6, 5, 1, 'Estantería 3', 6, 1, '2023-06-01 00:00:00'),
+  (11, 'Jane Eyre', 'images/', '11.jpg', 7, 12, 1, 'Estantería 4', 27, 1, '2023-06-01 00:00:00'),
  
  INSERT INTO EDITORIAL  (IdEditorial, Descripcion, Estado, FechaCreacion)
 VALUES

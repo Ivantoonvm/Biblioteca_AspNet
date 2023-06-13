@@ -155,7 +155,7 @@
 
                     if (data.data != null) {
                         if(@usuarioId==3){
-                            const prestamosPersona =  data.data.filter(item => item.oPersona.idPersona == 3)
+                            const prestamosPersona =  data.data.filter(item => item.oPersona.oTipoPersona.idTipoPersona == 3)
                             $("#div_prestamos").text(prestamosPersona.length)
                         }else{
                             $("#div_prestamos").text(data.data.length)
@@ -183,10 +183,10 @@
 
                     if (data.data != null) {
                         if(@usuarioId==3){
-                            const prestamosPersona =  data.data.filter(item => item.oPersona.idPersona == 3 && item.oEstadoPrestamo.idEstadoPrestamo == 1)
-                            $("#div_prestamos").text(prestamosPersona.length)
+                            const prestamosPersona =  data.data.filter(item => item.oPersona.oTipoPersona.idTipoPersona == 3 && item.oEstadoPrestamo.idEstadoPrestamo == 1)
+                            $("#div_pendientes").text(prestamosPersona.length)
                         }else{
-                            var a = data.data.filter(item => item.oEstadoPrestamo.IdEstadoPrestamo == 1)
+                            var a = data.data.filter(item => item.oEstadoPrestamo.idEstadoPrestamo == 1)
                             $("#div_pendientes").text(a.length)
                         }
                         

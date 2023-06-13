@@ -98,7 +98,6 @@ namespace Proyecto_biblioteca.Controllers
         [HttpPost]
         public JsonResult GuardarAutor(Autor objeto)
         {
-            System.Console.WriteLine(objeto.IdAutor);
             bool respuesta = false;
             respuesta = (objeto.IdAutor == 0) ? AutorLogica.Instancia.Registrar(objeto) : AutorLogica.Instancia.Modificar(objeto);
             return Json(new { resultado = respuesta });

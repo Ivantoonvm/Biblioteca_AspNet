@@ -34,7 +34,6 @@ namespace Proyecto_biblioteca.Logica;
                     cmd.Parameters.AddWithValue("pDescripcion", oCategoria.Descripcion);
                     cmd.Parameters.Add("pResultado", MySqlDbType.Bit).Direction = ParameterDirection.Output;
                     cmd.CommandType = CommandType.StoredProcedure;
-                    Console.WriteLine(cmd.Parameters["pResultado"].Value);
                     oConexion.Open();
 
                     cmd.ExecuteNonQuery();

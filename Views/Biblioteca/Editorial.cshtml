@@ -147,8 +147,8 @@
 
         $(document).on('click', '.eliminar', function (event) {
             var json = $(this).data("informacion");
-            if (confirm('¿Estás seguro de que deseas eliminar esta editorial?')) {
-                    eliminarCategoria(json.idEditorial);
+            if (confirm('¿Estás seguro de que deseas eliminar esta Editorial?')) {
+                    eliminarEditorial(json.idEditorial);
                 }
         });
 
@@ -165,17 +165,17 @@
             $('#FormModal').modal('show');
         }
 
-         function eliminarCategoria(idEditorial) {
+         function eliminarEditorial(idEditorial) {
                 $.ajax({
                     url: '@Url.Action("EliminarEditorial", "Biblioteca")',
                     type: 'POST',
                     data: { IdEditorial: idEditorial },
                     success: function (response) {
                         if (response.resultado) {
-                            alert('Categoría eliminada correctamente');
+                            alert('Editorial eliminada correctamente');
                             $('#tabla').DataTable().ajax.reload();
                         } else {
-                            alert('Error al eliminar la categoría');
+                            alert('Error al eliminar la Editorial');
                         }
                     },
                     error: function (err) {

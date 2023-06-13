@@ -327,10 +327,10 @@
                     data: { IdLibro: IdLibro },
                     success: function (response) {
                         if (response.resultado) {
-                            alert('Categoría eliminada correctamente');
+                            alert('Libro eliminado correctamente');
                             $('#tabla').DataTable().ajax.reload();
                         } else {
-                            alert('Error al eliminar la categoría');
+                            alert('Error al eliminar la libro');
                         }
                     },
                     error: function (err) {

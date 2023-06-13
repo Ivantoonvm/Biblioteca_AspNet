@@ -270,10 +270,10 @@
                 success: function (data) {
                     if (data.resultado) {
                         tabladata.ajax.reload();
-                        alert("Listo", "Se registro la devolución", "success");
+                        alert("Se registro la devolución");
                         $("#devolvermodal").modal("hide");
                     } else {
-                        alert("Lo sentimos", "No se pudo registro la devolución", "warning");
+                        alert("No se pudo registro la devolución");
                         $("#devolvermodal").modal("hide");
                     }
                 },

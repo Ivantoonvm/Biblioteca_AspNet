@@ -128,7 +128,7 @@ namespace Proyecto_biblioteca.Logica
                 try
                 {
                     StringBuilder query = new StringBuilder();
-                    query.AppendLine("SELECT p.IdPrestamo, ep.IdEstadoPrestamo, ep.Descripcion, pe.Codigo, pe.Nombre, pe.Apellido, li.Titulo, DATE_FORMAT(p.FechaDevolucion, '%d/%m/%Y') AS FechaDevolucion, DATE_FORMAT(p.FechaConfirmacionDevolucion, '%d/%m/%Y') AS FechaConfirmacionDevolucion, p.EstadoEntregado, p.EstadoRecibido");
+                    query.AppendLine("SELECT p.IdPrestamo, ep.IdEstadoPrestamo, ep.Descripcion, pe.Codigo, pe.Nombre, pe.Apellido, pe.IdTipoPersona,li.Titulo, DATE_FORMAT(p.FechaDevolucion, '%d/%m/%Y') AS FechaDevolucion, DATE_FORMAT(p.FechaConfirmacionDevolucion, '%d/%m/%Y') AS FechaConfirmacionDevolucion, p.EstadoEntregado, p.EstadoRecibido");
                     query.AppendLine("FROM PRESTAMO p");
                     query.AppendLine("INNER JOIN ESTADO_PRESTAMO ep ON ep.IdEstadoPrestamo = p.IdEstadoPrestamo");
                     query.AppendLine("INNER JOIN PERSONA pe ON pe.IdPersona = p.IdPersona");
@@ -149,7 +149,15 @@ namespace Proyecto_biblioteca.Logica
                             {
                                 IdPrestamo = Convert.ToInt32(dr["IdPrestamo"]),
                                 oEstadoPrestamo = new EstadoPrestamo() { IdEstadoPrestamo= Convert.ToInt32(dr["IdEstadoPrestamo"]),  Descripcion = dr["Descripcion"].ToString() },
-                                oPersona = new Persona() { Codigo = dr["Codigo"].ToString(), Nombre = dr["Nombre"].ToString(), Apellido = dr["Apellido"].ToString() },
+                                oPersona = new Persona() {
+                                    Codigo = dr["Codigo"].ToString(), 
+                                    Nombre = dr["Nombre"].ToString(), 
+                                    Apellido = dr["Apellido"].ToString(),
+                                     oTipoPersona = new TipoPersona
+                                    {
+                                            IdTipoPersona = Convert.ToInt32(dr["IdTipoPersona"])
+                                    }
+                                    },
                                 oLibro= new Libro() { Titulo = dr["Titulo"].ToString() },
                                 TextoFechaDevolucion = dr["FechaDevolucion"].ToString(),
                                 TextoFechaConfirmacionDevolucion = dr["FechaConfirmacionDevolucion"].ToString(),

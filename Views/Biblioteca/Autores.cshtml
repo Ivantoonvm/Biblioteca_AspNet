@@ -150,7 +150,7 @@
         $(document).on('click', '.eliminar', function (event) {
             var json = $(this).data("informacion");
             if (confirm('¿Estás seguro de que deseas eliminar a este Autor?')) {
-                    eliminarCategoria(json.idAutor);
+                    eliminarAutor(json.idAutor);
                 }
         });
 
@@ -168,17 +168,17 @@
             $('#FormModal').modal('show');
         }
 
-         function eliminarCategoria(ididAutor) {
+         function eliminarAutor(ididAutor) {
                 $.ajax({
                     url: '@Url.Action("EliminarAutor", "Biblioteca")',
                     type: 'POST',
                     data: { IdidAutor: ididAutor },
                     success: function (response) {
                         if (response.resultado) {
-                            alert('Categoría eliminada correctamente');
+                            alert('Autor eliminado correctamente');
                             $('#tabla').DataTable().ajax.reload();
                         } else {
-                            alert('Error al eliminar la categoría');
+                            alert('Error al eliminar el Autor');
                         }
                     },
                     error: function (err) {
